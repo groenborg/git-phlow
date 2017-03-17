@@ -1,9 +1,15 @@
 resources:
-    #GITHUB REPOSITORY
+    #GIT-PHLOW GITHUB REPOSITORY
     - name: git-phlow
       type: git
       source:
         uri: https://github.com/Praqma/git-phlow.git
+        branch: develop
+    #PRAQMA-TAP REPOSITORY
+    - name: praqma-tap
+      type: git
+      source: 
+        uri: https://github.com/Praqma/homebrew-praqma-tap.git
         branch: master
 
    #VERSION 
@@ -93,7 +99,7 @@ jobs:
       params: {bump: patch}
     - get: git-phlow 
       passed: [integration-tests]
-      trigger: true
+      trigger: false
     - put: resource-version
       params: {file: resource-version/version}
     - task: create-release 
@@ -160,3 +166,12 @@ jobs:
       globs: 
         - phlow-artifact-linux-s3/git-phlow-*-linux-amd64.tar.gz
         - phlow-artifact-darwin-s3/git-phlow-*-darwin-amd64.tar.gz
+
+- name: brew-patch
+  plan:
+    - get: resource-version
+    - get: phlow-artifact-darwin-s3
+    - get: praqma-tap
+    - get: git-phlow 
+    - task: update-brew
+      file: git-phlow/ci/tasks/pkg-release.yml 

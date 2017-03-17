@@ -57,12 +57,13 @@ func LocalDeliver(defaultBranch string) {
 		return
 	}
 	//Pull rebase latest changes
-	fmt.Fprintln(os.Stdout, "Trying to pull latest changes")
+	ui.PhlowSpinner.Start("Pull latest changes")
 	output, err := githandler.Pull()
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+	ui.PhlowSpinner.Stop()
 	fmt.Println(output)
 
 	fmt.Fprintf(os.Stdout, "Merging changes from branch %s into branch %s \n", ui.BranchFormat(branchInfo.Current), ui.BranchFormat(defaultBranch))

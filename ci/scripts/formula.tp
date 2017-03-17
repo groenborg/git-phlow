@@ -1,0 +1,19 @@
+class GitPhlow < Formula
+  desc "pragmatic workflow extension for git"
+  homepage "https://github.com/Praqma/git-phlow"
+  url "https://github.com/Praqma/git-phlow/releases/download/{{ $url }}"
+  version "{{ $version }}"
+  sha256 "{{ $sha }}"
+
+  def install
+    bin.install "git-phlow"
+  end
+
+  def caveats; <<-EOS.undent
+    Make sure git is installed
+    EOS
+  end
+  test do
+    system "true"
+  end
+end
