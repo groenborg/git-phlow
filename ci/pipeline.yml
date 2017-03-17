@@ -174,4 +174,4 @@ jobs:
     - get: praqma-tap
     - get: git-phlow 
     - task: update-brew
-      file: git-phlow/ci/tasks/pkg-release.yml 
+      file: git-phlow/ci/tasks/brew-release.yml 
