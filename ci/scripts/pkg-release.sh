@@ -4,11 +4,11 @@ set -e -u -x
 #LIST RESOURCES IN ENTRY FOLDER
 #FOR DEBUGGING PURPOSES
 ls -lah
-
+ls phlow-artifact-darwin-s3/
 #GET VERSION AND PATH
 #STORE VERSION AND PATH FOR BUILD
 VERSION=$(cat resource-version/version)
-SHA=$(sha256sum git-phlow-pipeline-artifacts/git-phlow-$VERSION-linux-amd64.tar.gz)
+SHA=$(sha256sum phlow-artifact-darwin-s3/git-phlow-$VERSION-linux-amd64.tar.gz)
 URL=https://github.com/Praqma/git-phlow/releases/download/v$VERSION/git-phlow-$VERSION-darwin-amd64.tar.gz
 BUILDPATH=$(pwd)
 
