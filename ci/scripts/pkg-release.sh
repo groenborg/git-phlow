@@ -13,9 +13,9 @@ URL=https://github.com/Praqma/git-phlow/releases/download/v$VERSION/git-phlow-$V
 BUILDPATH=$(pwd)
 
 #get stuffe
-wget https://github.com/gliderlabs/sigil/releases/download/v0.4.0/sigil_0.4.0_Darwin_x86_64.tgz | tar -zxC /usr/local/bin
+wget https://github.com/gliderlabs/sigil/releases/download/v0.4.0/sigil_0.4.0_Darwin_x86_64.tgz | tar -zxC ./
 
 
 #Install sigil first
 
-sigil -f git-phlow/ci/scripts/formula.tp sha$SHA= version=$VERSION url=$URL
+./sigil -f git-phlow/ci/scripts/formula.tp sha$SHA= version=$VERSION url=$URL
