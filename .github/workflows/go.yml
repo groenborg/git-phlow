@@ -1,7 +1,15 @@
 name: Go
 on: [push]
 jobs:
-
+  
+  hello:
+    name: hello
+    runs-on: ubuntu-latest
+    steps:
+      
+    - name: say hi
+      run: echo "hello code cafe"
+  
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -12,8 +20,6 @@ jobs:
       with:
         go-version: 1.13
       id: go
-      env:
-        GOBIN: $(go env GOPATH)/bin 
 
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
@@ -32,3 +38,5 @@ jobs:
         export PATH=$PATH:$(go env GOPATH)/bin
         go get github.com/onsi/ginkgo/ginkgo
         ginkgo -r -v --trace
+    
+ 
