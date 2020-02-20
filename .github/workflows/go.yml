@@ -12,7 +12,7 @@ jobs:
   
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, macos-latest]
     steps:
 
     - name: Set up Go 1.13
@@ -39,4 +39,9 @@ jobs:
         go get github.com/onsi/ginkgo/ginkgo
         ginkgo -r -v --trace
     
+    - name: Upload binary
+      uses: actions/upload-artifact@v1
+      with:
+        name: git-phlow
+        path: git-phlow
  
