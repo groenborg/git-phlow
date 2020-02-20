@@ -18,10 +18,13 @@ jobs:
 
     - name: Install dependencies
       run: |
+        go env
         go get -v -d ./...
     
     - name: Build
       run: go build -v .
 
     - name: test
-      run: ginkgo -r -v --trace 
+      run: |
+        go get github.com/onsi/ginkgo/ginkgo
+        ginkgo
