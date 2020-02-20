@@ -13,7 +13,7 @@ jobs:
         go-version: 1.13
       id: go
       env:
-        key: value 
+        key: ${{GOBIN=$(go env GOPATH)/bin}} 
 
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
@@ -29,5 +29,6 @@ jobs:
     - name: test
       run: |
         export GOBIN=$(go env GOPATH)/bin
+        export PATH=$PATH:$(go env GOPATH)/bin
         go get github.com/onsi/ginkgo/ginkgo
         ginkgo
